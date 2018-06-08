@@ -7,9 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D0D25B8920C80F5500A25627 /* SCNVectorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D25B8820C80F5500A25627 /* SCNVectorExtension.swift */; };
+		D0D25B8920C80F5500A25627 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D25B8820C80F5500A25627 /* Extensions.swift */; };
 		D0E5847A20C806050052967A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5847920C806050052967A /* AppDelegate.swift */; };
-		D0E5847C20C806050052967A /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E5847B20C806050052967A /* art.scnassets */; };
 		D0E5847E20C806050052967A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5847D20C806050052967A /* ViewController.swift */; };
 		D0E5848120C806050052967A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0E5847F20C806050052967A /* Main.storyboard */; };
 		D0E5848320C806050052967A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E5848220C806050052967A /* Assets.xcassets */; };
@@ -17,10 +16,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D0D25B8820C80F5500A25627 /* SCNVectorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SCNVectorExtension.swift; sourceTree = "<group>"; };
+		D0D25B8820C80F5500A25627 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D0E5847620C806050052967A /* Eyes Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eyes Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E5847920C806050052967A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D0E5847B20C806050052967A /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		D0E5847D20C806050052967A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D0E5848020C806050052967A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D0E5848220C806050052967A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -59,9 +57,8 @@
 			isa = PBXGroup;
 			children = (
 				D0E5847920C806050052967A /* AppDelegate.swift */,
-				D0E5847B20C806050052967A /* art.scnassets */,
 				D0E5847D20C806050052967A /* ViewController.swift */,
-				D0D25B8820C80F5500A25627 /* SCNVectorExtension.swift */,
+				D0D25B8820C80F5500A25627 /* Extensions.swift */,
 				D0E5847F20C806050052967A /* Main.storyboard */,
 				D0E5848220C806050052967A /* Assets.xcassets */,
 				D0E5848420C806050052967A /* LaunchScreen.storyboard */,
@@ -128,7 +125,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0E5847C20C806050052967A /* art.scnassets in Resources */,
 				D0E5848620C806050052967A /* LaunchScreen.storyboard in Resources */,
 				D0E5848320C806050052967A /* Assets.xcassets in Resources */,
 				D0E5848120C806050052967A /* Main.storyboard in Resources */,
@@ -142,7 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0D25B8920C80F5500A25627 /* SCNVectorExtension.swift in Sources */,
+				D0D25B8920C80F5500A25627 /* Extensions.swift in Sources */,
 				D0E5847E20C806050052967A /* ViewController.swift in Sources */,
 				D0E5847A20C806050052967A /* AppDelegate.swift in Sources */,
 			);
@@ -289,7 +285,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EJ5UD9292F;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Eyes Tracking/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -307,7 +303,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EJ5UD9292F;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Eyes Tracking/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

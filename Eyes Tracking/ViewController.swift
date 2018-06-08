@@ -25,19 +25,29 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     var faceNode: SCNNode = SCNNode()
     
     var eyeLNode: SCNNode = {
-        let geometry = SCNBox(width: 0.004, height: 0.004, length: 0.004, chamferRadius: 0)
-        geometry.firstMaterial?.diffuse.contents = UIColor.green
+        let geometry = SCNCone(topRadius: 0.005, bottomRadius: 0, height: 0.2)
+        geometry.radialSegmentCount = 3
+        geometry.firstMaterial?.diffuse.contents = UIColor.blue
         let node = SCNNode()
         node.geometry = geometry
-        return node
+        node.eulerAngles.x = -.pi / 2
+        node.position.z = 0.1
+        let parentNode = SCNNode()
+        parentNode.addChildNode(node)
+        return parentNode
     }()
     
     var eyeRNode: SCNNode = {
-        let geometry = SCNBox(width: 0.004, height: 0.004, length: 0.004, chamferRadius: 0)
-        geometry.firstMaterial?.diffuse.contents = UIColor.green
+        let geometry = SCNCone(topRadius: 0.005, bottomRadius: 0, height: 0.2)
+        geometry.radialSegmentCount = 3
+        geometry.firstMaterial?.diffuse.contents = UIColor.blue
         let node = SCNNode()
         node.geometry = geometry
-        return node
+        node.eulerAngles.x = -.pi / 2
+        node.position.z = 0.1
+        let parentNode = SCNNode()
+        parentNode.addChildNode(node)
+        return parentNode
     }()
     
     var lookAtTargetEyeLNode: SCNNode = SCNNode()
@@ -60,6 +70,10 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         return SCNNode(geometry: screenGeometry)
     }()
     
+    var eyeLookAtPositionXs: [CGFloat] = []
+    
+    var eyeLookAtPositionYs: [CGFloat] = []
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
     }
@@ -72,9 +86,12 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         // Setup Design Elements
         eyePositionIndicatorView.layer.cornerRadius = eyePositionIndicatorView.bounds.width / 2
         sceneView.layer.cornerRadius = 28
-        blurBarView.layer.cornerRadius = 36
-        webView.layer.cornerRadius = 16
         eyePositionIndicatorCenterView.layer.cornerRadius = 4
+        
+        blurBarView.layer.cornerRadius = 36
+        blurBarView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        webView.layer.cornerRadius = 16
+        webView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
         // Set the view's delegate
         sceneView.delegate = self
@@ -158,13 +175,23 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
                 eyeLLookAt.y = CGFloat(result.localCoordinates.y) / (self.phoneScreenSize.height / 2) * self.phoneScreenPointSize.height + heightCompensation
             }
             
+            // Add the latest position and keep up to 8 recent position to smooth with.
+            let smoothThresholdNumber: Int = 10
+            self.eyeLookAtPositionXs.append((eyeRLookAt.x + eyeLLookAt.x) / 2)
+            self.eyeLookAtPositionYs.append(-(eyeRLookAt.y + eyeLLookAt.y) / 2)
+            self.eyeLookAtPositionXs = Array(self.eyeLookAtPositionXs.suffix(smoothThresholdNumber))
+            self.eyeLookAtPositionYs = Array(self.eyeLookAtPositionYs.suffix(smoothThresholdNumber))
+            
+            let smoothEyeLookAtPositionX = self.eyeLookAtPositionXs.average!
+            let smoothEyeLookAtPositionY = self.eyeLookAtPositionYs.average!
+            
             // update indicator position
-            self.eyePositionIndicatorView.transform = CGAffineTransform(translationX: (eyeRLookAt.x + eyeLLookAt.x) / 2, y: -(eyeRLookAt.y + eyeLLookAt.y) / 2)
+            self.eyePositionIndicatorView.transform = CGAffineTransform(translationX: smoothEyeLookAtPositionX, y: smoothEyeLookAtPositionY)
             
             // update eye look at labels values
-            self.lookAtPositionXLabel.text = "\(Int(round((eyeRLookAt.x + eyeLLookAt.x) / 2 + 187.5)))"
+            self.lookAtPositionXLabel.text = "\(Int(round(smoothEyeLookAtPositionX + self.phoneScreenPointSize.width / 2)))"
             
-            self.lookAtPositionYLabel.text = "\(Int(round(-(eyeRLookAt.y + eyeLLookAt.y) / 2 + 406)))"
+            self.lookAtPositionYLabel.text = "\(Int(round(smoothEyeLookAtPositionY + self.phoneScreenPointSize.height / 2)))"
             
             // Calculate distance of the eyes to the camera
             let distanceL = self.eyeLNode.worldPosition - SCNVector3Zero
