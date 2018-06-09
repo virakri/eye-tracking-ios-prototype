@@ -122,6 +122,7 @@ class MLTrainingViewController: UIViewController, ARSCNViewDelegate, ARSessionDe
                     UIView.animate(withDuration: 0.175, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: [.allowUserInteraction], animations: {
                         self.view.backgroundColor = .black
                     }, completion: nil)
+                    changeIndicatorPosition()
                     runTimer()
                     runSubTimer()
                 }
@@ -138,17 +139,17 @@ class MLTrainingViewController: UIViewController, ARSCNViewDelegate, ARSessionDe
     }
     
     func runTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 5, target: self,   selector: (#selector(updateTimer)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 5, target: self,   selector: (#selector(changeIndicatorPosition)), userInfo: nil, repeats: true)
     }
     
     func runSubTimer() {
-        subTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self,   selector: (#selector(updateSubTimer)), userInfo: nil, repeats: true)
+        subTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self,   selector: (#selector(intervalAction)), userInfo: nil, repeats: true)
     }
     
-    // MARK: - updateTimer()
+    // MARK: - changeIndicatorPosition()
     // To change the position of look-at-indicator
     
-    @objc func updateTimer() {
+    @objc func changeIndicatorPosition() {
         
         subTimerIntervalCount = 0
         
@@ -160,18 +161,18 @@ class MLTrainingViewController: UIViewController, ARSCNViewDelegate, ARSessionDe
             self.lookAtScaleView.transform = CGAffineTransform(scaleX: 1, y: 1)
         }, completion: nil)
         
-        let transformX = (lookAtPosition.x - 0.5) * UIScreen.main.bounds.width
-        let transformY = (lookAtPosition.y - 0.5) * UIScreen.main.bounds.height
+        let transformX = (lookAtPosition.x - 0.5) * UIScreen.main.bounds.width // Screen size width
+        let transformY = (lookAtPosition.y - 0.5) * UIScreen.main.bounds.height // Screen size height
         
         lookAtPositionView.transform.tx = transformX
         lookAtPositionView.transform.ty = transformY
         
     }
     
-    // MARK: - updateSubTimer()
+    // MARK: - intervalAction()
     // To provide feedback when data is captured
     
-    @objc func updateSubTimer() {
+    @objc func intervalAction() {
         
         // Perform bouncing animation every 1 sec to remind to be ready
         if Double(subTimerIntervalCount).remainder(dividingBy: 2) == 0 && subTimerIntervalCount != 0 && subTimerIntervalCount < 7 {
