@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14269.12" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Joa-pf-dzV">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -195,6 +195,95 @@ Position Estimation</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="114.53201970443351"/>
+        </scene>
+        <!--Training View Controller-->
+        <scene sceneID="Nz6-rm-Y3a">
+            <objects>
+                <viewController id="Joa-pf-dzV" customClass="MLTrainingViewController" customModule="Eyes_Tracking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jg8-RZ-6kF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pjE-Wc-D1m">
+                                <rect key="frame" x="139.66666666666666" y="358" width="96" height="96"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gT4-KM-tSL">
+                                        <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgH-bY-yva">
+                                                <rect key="frame" x="24" y="24" width="48" height="48"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="48" id="GmI-on-V4n"/>
+                                                    <constraint firstAttribute="height" constant="48" id="pHm-Ki-dXJ"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="0.33000000000000002" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="dgH-bY-yva" firstAttribute="centerX" secondItem="gT4-KM-tSL" secondAttribute="centerX" id="PjD-2e-1nK"/>
+                                            <constraint firstItem="dgH-bY-yva" firstAttribute="centerY" secondItem="gT4-KM-tSL" secondAttribute="centerY" id="SUK-eI-n8q"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="pjE-Wc-D1m" secondAttribute="height" multiplier="1:1" id="1Bc-NO-vXH"/>
+                                    <constraint firstAttribute="height" constant="96" id="5rF-SM-qIC"/>
+                                    <constraint firstAttribute="bottom" secondItem="gT4-KM-tSL" secondAttribute="bottom" id="IS4-Wo-jGQ"/>
+                                    <constraint firstItem="gT4-KM-tSL" firstAttribute="leading" secondItem="pjE-Wc-D1m" secondAttribute="leading" id="UIf-se-d2D"/>
+                                    <constraint firstAttribute="trailing" secondItem="gT4-KM-tSL" secondAttribute="trailing" id="Vk8-Ie-2Ke"/>
+                                    <constraint firstItem="gT4-KM-tSL" firstAttribute="top" secondItem="pjE-Wc-D1m" secondAttribute="top" id="y2n-Dq-vSP"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pjE-Wc-D1m" firstAttribute="centerX" secondItem="jg8-RZ-6kF" secondAttribute="centerX" id="Uo8-9T-9yZ"/>
+                            <constraint firstItem="pjE-Wc-D1m" firstAttribute="centerY" secondItem="jg8-RZ-6kF" secondAttribute="centerY" id="iYc-jM-WWX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wbr-ik-p73"/>
+                    </view>
+                    <connections>
+                        <outlet property="lookAtCenterView" destination="dgH-bY-yva" id="0za-uc-Z6z"/>
+                        <outlet property="lookAtPositionView" destination="pjE-Wc-D1m" id="oeN-2i-DD4"/>
+                        <outlet property="lookAtScaleView" destination="gT4-KM-tSL" id="AIa-ys-TY1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wTx-xI-MEF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137" y="836"/>
+        </scene>
+        <!--Data Display View Controller-->
+        <scene sceneID="0Ma-Cr-bQS">
+            <objects>
+                <viewController id="irV-Fx-oE7" customClass="MLDataDisplayViewController" customModule="Eyes_Tracking" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GhC-My-vdF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="zXA-Dy-ym1">
+                                <rect key="frame" x="32" y="60" width="311" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" placeholder="YES" id="lyE-br-bpd"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="zXA-Dy-ym1" firstAttribute="leading" secondItem="ggj-RO-aIK" secondAttribute="leading" constant="32" id="0k1-Ol-EDX"/>
+                            <constraint firstItem="zXA-Dy-ym1" firstAttribute="top" secondItem="ggj-RO-aIK" secondAttribute="top" constant="16" id="2ta-dn-WvF"/>
+                            <constraint firstItem="ggj-RO-aIK" firstAttribute="trailing" secondItem="zXA-Dy-ym1" secondAttribute="trailing" constant="32" id="YtZ-V0-aFr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ggj-RO-aIK"/>
+                    </view>
+                    <connections>
+                        <outlet property="mainStackView" destination="zXA-Dy-ym1" id="nMq-Gs-fw3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aey-R4-Uf2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137" y="1561"/>
         </scene>
     </scenes>
 </document>

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D04BFCC920CB73F300315FF0 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BFCC820CB73F300315FF0 /* Utilities.swift */; };
+		D07E3AD220CB259D00C0FCDD /* MLTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07E3AD120CB259D00C0FCDD /* MLTrainingViewController.swift */; };
+		D07E3AD420CB263500C0FCDD /* MLDataDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07E3AD320CB263500C0FCDD /* MLDataDisplayViewController.swift */; };
 		D0D25B8920C80F5500A25627 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D25B8820C80F5500A25627 /* Extensions.swift */; };
 		D0E5847A20C806050052967A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5847920C806050052967A /* AppDelegate.swift */; };
 		D0E5847E20C806050052967A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5847D20C806050052967A /* ViewController.swift */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D04BFCC820CB73F300315FF0 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		D07E3AD120CB259D00C0FCDD /* MLTrainingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLTrainingViewController.swift; sourceTree = "<group>"; };
+		D07E3AD320CB263500C0FCDD /* MLDataDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLDataDisplayViewController.swift; sourceTree = "<group>"; };
 		D0D25B8820C80F5500A25627 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D0E5847620C806050052967A /* Eyes Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eyes Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E5847920C806050052967A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +64,9 @@
 			children = (
 				D0E5847920C806050052967A /* AppDelegate.swift */,
 				D0E5847D20C806050052967A /* ViewController.swift */,
+				D07E3AD120CB259D00C0FCDD /* MLTrainingViewController.swift */,
+				D07E3AD320CB263500C0FCDD /* MLDataDisplayViewController.swift */,
+				D04BFCC820CB73F300315FF0 /* Utilities.swift */,
 				D0D25B8820C80F5500A25627 /* Extensions.swift */,
 				D0E5847F20C806050052967A /* Main.storyboard */,
 				D0E5848220C806050052967A /* Assets.xcassets */,
@@ -138,7 +147,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D07E3AD420CB263500C0FCDD /* MLDataDisplayViewController.swift in Sources */,
+				D04BFCC920CB73F300315FF0 /* Utilities.swift in Sources */,
 				D0D25B8920C80F5500A25627 /* Extensions.swift in Sources */,
+				D07E3AD220CB259D00C0FCDD /* MLTrainingViewController.swift in Sources */,
 				D0E5847E20C806050052967A /* ViewController.swift in Sources */,
 				D0E5847A20C806050052967A /* AppDelegate.swift in Sources */,
 			);
@@ -285,7 +297,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = EJ5UD9292F;
 				INFOPLIST_FILE = "Eyes Tracking/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -303,7 +315,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = EJ5UD9292F;
 				INFOPLIST_FILE = "Eyes Tracking/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
