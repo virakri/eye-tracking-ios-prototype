@@ -292,6 +292,53 @@ class MLTrainingViewController: UIViewController, ARSCNViewDelegate, ARSessionDe
     
     // TODO: Store data set to somewhere
     private func storeDataSet(dataSet: [Float]) {
+        /* DATA SET LABEL
+         [lookAtPositionX,
+         lookAtPositionY,
+         eyeBlinkLeft,
+         eyeLookDownLeft,
+         eyeLookInLeft,
+         eyeLookOutLeft,
+         eyeLookUpLeft,
+         eyeSquintLeft,
+         eyeWideLeft,
+         eyeBlinkRight,
+         eyeLookDownRight,
+         eyeLookInRight,
+         eyeLookOutRight,
+         eyeLookUpRight,
+         eyeSquintRight,
+         eyeWideRight,
+         browDownLeft,
+         browDownRight,
+         browInnerUp,
+         browOuterUpLeft,
+         browOuterUpRight,
+         cheekPuff,
+         cheekSquintLeft,
+         cheekSquintRight,
+         noseSneerLeft,
+         noseSneerRight,
+         facePositionX,
+         facePositionY,
+         facePositionZ,
+         faceEulerAnglesX,
+         faceEulerAnglesY,
+         faceEulerAnglesZ,
+         leftEyePositionX,
+         leftEyePositionY,
+         leftEyePositionZ,
+         leftEyeEulerAnglesX,
+         leftEyeEulerAnglesY,
+         leftEyeEulerAnglesZ,
+         rightEyePositionX,
+         rightEyePositionY,
+         rightEyePositionY,
+         rightEyeEulerAnglesX,
+         rightEyeEulerAnglesY,
+         rightEyeEulerAnglesZ]
+         */
+        // [lookAtPositionX, lookAtPositionY, ]
         print(dataSet)
     }
 }

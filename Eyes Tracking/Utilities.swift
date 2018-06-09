@@ -42,4 +42,4 @@ let blendShapes = [ARFaceAnchor.BlendShapeLocation.eyeBlinkLeft,
                    ARFaceAnchor.BlendShapeLocation.noseSneerLeft,
                    ARFaceAnchor.BlendShapeLocation.noseSneerRight]
 
-let vectorProfileNames: [VectorProfileName] = [.facePosition, .faceEulerAngles, .leftEyePosition, .leftEyeEulerAngles]
+let vectorProfileNames: [VectorProfileName] = [.facePosition, .faceEulerAngles, .leftEyePosition, .leftEyeEulerAngles,  .rightEyePosition, .rightEyeEulerAngles]
