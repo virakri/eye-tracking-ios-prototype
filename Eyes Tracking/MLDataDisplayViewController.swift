@@ -19,8 +19,16 @@ class MLDataDisplayViewController: UIViewController, ARSessionDelegate {
     
     var frame: ARFrame?
     
+    var isARAnchorAvailable = false
+    
+    var previousARAnchorTransform = simd_float4x4()
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
+    }
+    
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        return true
     }
     
     override func viewDidLoad() {
@@ -43,12 +51,30 @@ class MLDataDisplayViewController: UIViewController, ARSessionDelegate {
     private func addNewBarView(withColor color: UIColor = .gray) {
         let barView = UIView()
         barView.backgroundColor = color
-        barView.heightAnchor.constraint(equalToConstant: 4).isActive = true
+        barView.heightAnchor.constraint(equalToConstant: 8).isActive = true
+        barView.transform = CGAffineTransform(scaleX: 0, y: 1)
         mainStackView.addArrangedSubview(barView)
+    }
+    
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            let alert = UIAlertController(title: "Go to Main Menu", message: "Are you sure to go back to Main Menu.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Main Menu", style: .default, handler: { action in
+                if let navigationController = self.navigationController {
+                    navigationController.popViewController(animated: true)
+                }
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Navigation Bar Setup
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         // Store isIdleTimerDisabled Value
         UIApplication.shared.isIdleTimerDisabled = true
@@ -81,7 +107,33 @@ class MLDataDisplayViewController: UIViewController, ARSessionDelegate {
     }
     
     func session(_ session: ARSession, didUpdate frame: ARFrame) {
+        
         self.frame = frame
+        
+        if let faceAnchor = frame.anchors.first as? ARFaceAnchor {
+            
+            // Compare if the ARAnchor transform still remains the same that means the face isn't detected, so red screen will be displayed, and the data-capturing stops. When ARAnchor transform starts changing again, the screen turns black, and the data-capturing starts to work.
+            if faceAnchor.transform == previousARAnchorTransform {
+                if isARAnchorAvailable {
+                    UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: [.allowUserInteraction], animations: {
+                        self.view.backgroundColor = .red
+                        for view in self.mainStackView.subviews {
+                            view.transform = CGAffineTransform(scaleX: 0, y: 1)
+                        }
+                    }, completion: nil)
+                }
+                isARAnchorAvailable = false
+            } else {
+                
+                if !isARAnchorAvailable {
+                    UIView.animate(withDuration: 0.175, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: [.allowUserInteraction], animations: {
+                        self.view.backgroundColor = .black
+                    }, completion: nil)
+                }
+                isARAnchorAvailable = true
+            }
+            previousARAnchorTransform = faceAnchor.transform
+        }
     }
     
     // MARK: - update(ARFaceAnchor)
@@ -140,20 +192,15 @@ class MLDataDisplayViewController: UIViewController, ARSessionDelegate {
     private func getValuesFrom(_ simdTransform: simd_float4x4) -> (eulerAngles: SCNVector3, position: SCNVector3) {
         let node = SCNNode()
         node.simdTransform = simdTransform
-        
         return (eulerAngles: node.eulerAngles, position: node.position)
     }
     
     private func clamp(_ value: NSNumber) -> NSNumber {
         let floatValue = Float(truncating: value)
-
         return NSNumber(value: max(min(floatValue, 1), 0))
-        
     }
     
     private func invertClamp(_ value: Float) -> Float {
-        
         return max(min((value + 1) / 2, 1), 0)
-        
     }
 }

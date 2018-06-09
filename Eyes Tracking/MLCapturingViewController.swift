@@ -11,7 +11,7 @@ import SceneKit
 import ARKit
 import WebKit
 
-class MLTrainingViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
+class MLCapturingViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     
     @IBOutlet weak var lookAtPositionView: UIView!
     
@@ -43,6 +43,20 @@ class MLTrainingViewController: UIViewController, ARSCNViewDelegate, ARSessionDe
         }
     }
     
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        if motion == .motionShake {
+            let alert = UIAlertController(title: "Go to Main Menu", message: "Are you sure to go back to Main Menu.", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Main Menu", style: .default, handler: { action in
+                if let navigationController = self.navigationController {
+                    navigationController.popViewController(animated: true)
+                }
+            }))
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+    }
+    
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -53,6 +67,7 @@ class MLTrainingViewController: UIViewController, ARSCNViewDelegate, ARSessionDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         session.delegate = self
         
         view.backgroundColor = .red
@@ -67,6 +82,9 @@ class MLTrainingViewController: UIViewController, ARSCNViewDelegate, ARSessionDe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Navigation Bar Setup
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         
         // Store isIdleTimerDisabled Value
         UIApplication.shared.isIdleTimerDisabled = true

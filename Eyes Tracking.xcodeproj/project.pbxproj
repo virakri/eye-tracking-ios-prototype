@@ -8,27 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		D04BFCC920CB73F300315FF0 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BFCC820CB73F300315FF0 /* Utilities.swift */; };
-		D07E3AD220CB259D00C0FCDD /* MLTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07E3AD120CB259D00C0FCDD /* MLTrainingViewController.swift */; };
+		D04BFCCB20CBFE7E00315FF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BFCCA20CBFE7E00315FF0 /* ViewController.swift */; };
+		D07E3AD220CB259D00C0FCDD /* MLCapturingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07E3AD120CB259D00C0FCDD /* MLCapturingViewController.swift */; };
 		D07E3AD420CB263500C0FCDD /* MLDataDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07E3AD320CB263500C0FCDD /* MLDataDisplayViewController.swift */; };
 		D0D25B8920C80F5500A25627 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D25B8820C80F5500A25627 /* Extensions.swift */; };
 		D0E5847A20C806050052967A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5847920C806050052967A /* AppDelegate.swift */; };
-		D0E5847E20C806050052967A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5847D20C806050052967A /* ViewController.swift */; };
+		D0E5847E20C806050052967A /* BasicEyesTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5847D20C806050052967A /* BasicEyesTrackingViewController.swift */; };
 		D0E5848120C806050052967A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0E5847F20C806050052967A /* Main.storyboard */; };
 		D0E5848320C806050052967A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0E5848220C806050052967A /* Assets.xcassets */; };
-		D0E5848620C806050052967A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0E5848420C806050052967A /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D04BFCC820CB73F300315FF0 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
-		D07E3AD120CB259D00C0FCDD /* MLTrainingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLTrainingViewController.swift; sourceTree = "<group>"; };
+		D04BFCCA20CBFE7E00315FF0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D07E3AD120CB259D00C0FCDD /* MLCapturingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLCapturingViewController.swift; sourceTree = "<group>"; };
 		D07E3AD320CB263500C0FCDD /* MLDataDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLDataDisplayViewController.swift; sourceTree = "<group>"; };
 		D0D25B8820C80F5500A25627 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D0E5847620C806050052967A /* Eyes Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eyes Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E5847920C806050052967A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D0E5847D20C806050052967A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D0E5847D20C806050052967A /* BasicEyesTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEyesTrackingViewController.swift; sourceTree = "<group>"; };
 		D0E5848020C806050052967A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D0E5848220C806050052967A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D0E5848520C806050052967A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D0E5848720C806050052967A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,14 +63,14 @@
 			isa = PBXGroup;
 			children = (
 				D0E5847920C806050052967A /* AppDelegate.swift */,
-				D0E5847D20C806050052967A /* ViewController.swift */,
-				D07E3AD120CB259D00C0FCDD /* MLTrainingViewController.swift */,
+				D0E5847D20C806050052967A /* BasicEyesTrackingViewController.swift */,
+				D04BFCCA20CBFE7E00315FF0 /* ViewController.swift */,
+				D07E3AD120CB259D00C0FCDD /* MLCapturingViewController.swift */,
 				D07E3AD320CB263500C0FCDD /* MLDataDisplayViewController.swift */,
 				D04BFCC820CB73F300315FF0 /* Utilities.swift */,
 				D0D25B8820C80F5500A25627 /* Extensions.swift */,
 				D0E5847F20C806050052967A /* Main.storyboard */,
 				D0E5848220C806050052967A /* Assets.xcassets */,
-				D0E5848420C806050052967A /* LaunchScreen.storyboard */,
 				D0E5848720C806050052967A /* Info.plist */,
 			);
 			path = "Eyes Tracking";
@@ -134,7 +134,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D0E5848620C806050052967A /* LaunchScreen.storyboard in Resources */,
 				D0E5848320C806050052967A /* Assets.xcassets in Resources */,
 				D0E5848120C806050052967A /* Main.storyboard in Resources */,
 			);
@@ -150,8 +149,9 @@
 				D07E3AD420CB263500C0FCDD /* MLDataDisplayViewController.swift in Sources */,
 				D04BFCC920CB73F300315FF0 /* Utilities.swift in Sources */,
 				D0D25B8920C80F5500A25627 /* Extensions.swift in Sources */,
-				D07E3AD220CB259D00C0FCDD /* MLTrainingViewController.swift in Sources */,
-				D0E5847E20C806050052967A /* ViewController.swift in Sources */,
+				D07E3AD220CB259D00C0FCDD /* MLCapturingViewController.swift in Sources */,
+				D04BFCCB20CBFE7E00315FF0 /* ViewController.swift in Sources */,
+				D0E5847E20C806050052967A /* BasicEyesTrackingViewController.swift in Sources */,
 				D0E5847A20C806050052967A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,14 +165,6 @@
 				D0E5848020C806050052967A /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		D0E5848420C806050052967A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D0E5848520C806050052967A /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
