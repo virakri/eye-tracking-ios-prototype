@@ -10,6 +10,7 @@ import UIKit
 import SceneKit
 import ARKit
 import WebKit
+import Firebase
 
 class MLCapturingViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     
@@ -45,12 +46,12 @@ class MLCapturingViewController: UIViewController, ARSCNViewDelegate, ARSessionD
     
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
-            let alert = UIAlertController(title: "Go to Main Menu", message: "Are you sure to go back to Main Menu.", preferredStyle: UIAlertController.Style.alert)
+            timer.invalidate()
+            subTimer.invalidate()
+            let alert = UIAlertController(title: "Go to Main Menu", message: "Are you sure to save and go back to Main Menu.", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
             alert.addAction(UIAlertAction(title: "Main Menu", style: .default, handler: { action in
-                if let navigationController = self.navigationController {
-                    navigationController.popViewController(animated: true)
-                }
+                self.saveToCloud()
             }))
             self.present(alert, animated: true, completion: nil)
             
@@ -308,6 +309,7 @@ class MLCapturingViewController: UIViewController, ARSCNViewDelegate, ARSessionD
         return max(min((value + 1) / 2, 1), 0)
     }
     
+    var dataSets = [String]()
     // TODO: Store data set to somewhere
     private func storeDataSet(dataSet: [Float]) {
         /* DATA SET LABEL
@@ -357,6 +359,25 @@ class MLCapturingViewController: UIViewController, ARSCNViewDelegate, ARSessionD
          rightEyeEulerAnglesZ]
          */
         // [lookAtPositionX, lookAtPositionY, ]
-        print(dataSet)
+        dataSets.append(dataSet.map { "\($0)" }.joined(separator: ","))
+    }
+    
+    var filename: String {
+        let date = Date().timeIntervalSince1970
+        return "\(Int(date)) - \(UIDevice.current.name).csv"
+    }
+    
+    func saveToCloud() {
+        let storage = Storage.storage()
+        let ref = storage.reference(withPath: "data-set/\(filename)")
+        let legend = "lookAtPositionX,lookAtPositionY,eyeBlinkLeft,eyeLookDownLeft,eyeLookInLeft,eyeLookOutLeft,eyeLookUpLeft,eyeSquintLeft,eyeWideLeft,eyeBlinkRight,eyeLookDownRight,eyeLookInRight,eyeLookOutRight,eyeLookUpRight,eyeSquintRight,eyeWideRight,browDownLeft,browDownRight,browInnerUp,browOuterUpLeft,browOuterUpRight,cheekPuff,cheekSquintLeft,cheekSquintRight,noseSneerLeft,noseSneerRight,facePositionX,facePositionY,facePositionZ,faceEulerAnglesX,faceEulerAnglesY,faceEulerAnglesZ,leftEyePositionX,leftEyePositionY,leftEyePositionZ,leftEyeEulerAnglesX,leftEyeEulerAnglesY,leftEyeEulerAnglesZ,rightEyePositionX,rightEyePositionY,rightEyePositionY,rightEyeEulerAnglesX,rightEyeEulerAnglesY,rightEyeEulerAnglesZ"
+        let ds = [legend, dataSets.joined(separator: "\n")].joined(separator: "\n")
+        let data = ds.data(using: .utf8)!
+        ref.putData(data, metadata: nil) { (_, error) in
+            if let error = error {
+                print(error)
+            }
+            self.navigationController?.popViewController(animated: true)
+        }
     }
 }

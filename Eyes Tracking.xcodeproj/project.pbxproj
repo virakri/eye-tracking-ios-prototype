@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9069057820CC527800474119 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9069057720CC527800474119 /* GoogleService-Info.plist */; };
+		CDB4F51548CB78DE8B268F9E /* Pods_Eyes_Tracking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F915E060E3BBB9335C3BEFAD /* Pods_Eyes_Tracking.framework */; };
 		D04BFCC920CB73F300315FF0 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BFCC820CB73F300315FF0 /* Utilities.swift */; };
 		D04BFCCB20CBFE7E00315FF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BFCCA20CBFE7E00315FF0 /* ViewController.swift */; };
 		D07E3AD220CB259D00C0FCDD /* MLCapturingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07E3AD120CB259D00C0FCDD /* MLCapturingViewController.swift */; };
@@ -19,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		221622603E38B6B319DF6083 /* Pods-Eyes Tracking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eyes Tracking.release.xcconfig"; path = "Pods/Target Support Files/Pods-Eyes Tracking/Pods-Eyes Tracking.release.xcconfig"; sourceTree = "<group>"; };
+		9069057720CC527800474119 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B40C11330C96D42AA16E1F34 /* Pods-Eyes Tracking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eyes Tracking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eyes Tracking/Pods-Eyes Tracking.debug.xcconfig"; sourceTree = "<group>"; };
 		D04BFCC820CB73F300315FF0 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		D04BFCCA20CBFE7E00315FF0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D07E3AD120CB259D00C0FCDD /* MLCapturingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLCapturingViewController.swift; sourceTree = "<group>"; };
@@ -30,6 +35,7 @@
 		D0E5848020C806050052967A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D0E5848220C806050052967A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0E5848720C806050052967A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F915E060E3BBB9335C3BEFAD /* Pods_Eyes_Tracking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eyes_Tracking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,17 +43,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDB4F51548CB78DE8B268F9E /* Pods_Eyes_Tracking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C71EF5514A3878C8D6C736B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F915E060E3BBB9335C3BEFAD /* Pods_Eyes_Tracking.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C4E84981A3E0F1FCCD1A1D37 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B40C11330C96D42AA16E1F34 /* Pods-Eyes Tracking.debug.xcconfig */,
+				221622603E38B6B319DF6083 /* Pods-Eyes Tracking.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		D0E5846D20C806050052967A = {
 			isa = PBXGroup;
 			children = (
 				D0E5847820C806050052967A /* Eyes Tracking */,
 				D0E5847720C806050052967A /* Products */,
+				C4E84981A3E0F1FCCD1A1D37 /* Pods */,
+				1C71EF5514A3878C8D6C736B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,6 +94,7 @@
 				D07E3AD120CB259D00C0FCDD /* MLCapturingViewController.swift */,
 				D07E3AD320CB263500C0FCDD /* MLDataDisplayViewController.swift */,
 				D04BFCC820CB73F300315FF0 /* Utilities.swift */,
+				9069057720CC527800474119 /* GoogleService-Info.plist */,
 				D0D25B8820C80F5500A25627 /* Extensions.swift */,
 				D0E5847F20C806050052967A /* Main.storyboard */,
 				D0E5848220C806050052967A /* Assets.xcassets */,
@@ -83,9 +110,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0E5848A20C806060052967A /* Build configuration list for PBXNativeTarget "Eyes Tracking" */;
 			buildPhases = (
+				35BB77E9DB55463ADBD54D21 /* [CP] Check Pods Manifest.lock */,
 				D0E5847220C806050052967A /* Sources */,
 				D0E5847320C806050052967A /* Frameworks */,
 				D0E5847420C806050052967A /* Resources */,
+				E7D99F9345E84C46169997E0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -136,10 +165,54 @@
 			files = (
 				D0E5848320C806050052967A /* Assets.xcassets in Resources */,
 				D0E5848120C806050052967A /* Main.storyboard in Resources */,
+				9069057820CC527800474119 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		35BB77E9DB55463ADBD54D21 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Eyes Tracking-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E7D99F9345E84C46169997E0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Eyes Tracking/Pods-Eyes Tracking-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Eyes Tracking/Pods-Eyes Tracking-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D0E5847220C806050052967A /* Sources */ = {
@@ -286,11 +359,13 @@
 		};
 		D0E5848B20C806060052967A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B40C11330C96D42AA16E1F34 /* Pods-Eyes Tracking.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EJ5UD9292F;
+				DEVELOPMENT_TEAM = 7J5JZ3G2QB;
 				INFOPLIST_FILE = "Eyes Tracking/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,11 +379,13 @@
 		};
 		D0E5848C20C806060052967A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 221622603E38B6B319DF6083 /* Pods-Eyes Tracking.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = EJ5UD9292F;
+				DEVELOPMENT_TEAM = 7J5JZ3G2QB;
 				INFOPLIST_FILE = "Eyes Tracking/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
