@@ -52,15 +52,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     
     var lookAtTargetEyeLNode: SCNNode = SCNNode()
     var lookAtTargetEyeRNode: SCNNode = SCNNode()
-    
-    // actual physical size of iPhoneX screen
-    let phoneScreenSize = CGSize(width: 0.0623908297, height: 0.135096943231532)
-    
-    // actual point size of iPhoneX screen
-    let phoneScreenPointSize = CGSize(width: 375, height: 812)
-    
     var virtualPhoneNode: SCNNode = SCNNode()
-    
     var virtualScreenNode: SCNNode = {
         
         let screenGeometry = SCNPlane(width: 1, height: 1)
@@ -70,12 +62,22 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         return SCNNode(geometry: screenGeometry)
     }()
     
-    var eyeLookAtPositionXs: [CGFloat] = []
+    // actual physical size of iPhoneX screen
+    let phoneScreenSize = CGSize(width: 0.0623908297, height: 0.135096943231532)
     
+    // actual point size of iPhoneX screen
+    let phoneScreenPointSize = CGSize(width: 375, height: 812)
+    
+    var eyeLookAtPositionXs: [CGFloat] = []
     var eyeLookAtPositionYs: [CGFloat] = []
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
+    }
+    
+    
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        return true
     }
     
     override func viewDidLoad() {
@@ -114,6 +116,9 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Store isIdleTimerDisabled Value
+        UIApplication.shared.isIdleTimerDisabled = true
         
         // Create a session configuration
         guard ARFaceTrackingConfiguration.isSupported else { return }

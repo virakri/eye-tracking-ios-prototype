@@ -10,6 +10,28 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
+        <scene sceneID="46q-bX-jSN">
+            <objects>
+                <viewController id="HFK-08-WmU" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7NY-HO-zOR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="IFI-U4-Dvc"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="a7K-wq-TiE"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <connections>
+                        <segue destination="BV1-FR-VrT" kind="show" id="9Nq-ce-a4r"/>
+                        <segue destination="irV-Fx-oE7" kind="show" id="JTp-uD-zMz"/>
+                        <segue destination="Joa-pf-dzV" kind="show" id="qli-mx-NSV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gnW-7l-ITZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="849" y="-652"/>
+        </scene>
+        <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="Eyes_Tracking" customModuleProvider="target" sceneMemberID="viewController">
@@ -181,6 +203,7 @@ Position Estimation</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9i0-fu-tQr"/>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="blurBarView" destination="vT5-6S-UTW" id="ZHs-yM-vhD"/>
                         <outlet property="distanceLabel" destination="luK-2a-LAg" id="Uao-cT-Xam"/>
@@ -244,6 +267,7 @@ Position Estimation</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="wbr-ik-p73"/>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="lookAtCenterView" destination="dgH-bY-yva" id="0za-uc-Z6z"/>
                         <outlet property="lookAtPositionView" destination="pjE-Wc-D1m" id="oeN-2i-DD4"/>
@@ -252,7 +276,7 @@ Position Estimation</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wTx-xI-MEF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="836"/>
+            <point key="canvasLocation" x="1575" y="115"/>
         </scene>
         <!--Data Display View Controller-->
         <scene sceneID="0Ma-Cr-bQS">
@@ -277,13 +301,32 @@ Position Estimation</string>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ggj-RO-aIK"/>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="mainStackView" destination="zXA-Dy-ym1" id="nMq-Gs-fw3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aey-R4-Uf2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="1561"/>
+            <point key="canvasLocation" x="850" y="115"/>
+        </scene>
+        <!--Eye Tracking-->
+        <scene sceneID="meR-Wh-qZS">
+            <objects>
+                <navigationController title="Eye Tracking" automaticallyAdjustsScrollViewInsets="NO" id="H7w-kB-pd4" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ydg-YA-P2A">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HFK-08-WmU" kind="relationship" relationship="rootViewController" id="Woc-I1-0zw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TE4-aR-Ovf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="849" y="-1381"/>
         </scene>
     </scenes>
 </document>

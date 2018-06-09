@@ -50,6 +50,9 @@ class MLDataDisplayViewController: UIViewController, ARSessionDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Store isIdleTimerDisabled Value
+        UIApplication.shared.isIdleTimerDisabled = true
+        
         // Create a session configuration
         guard ARFaceTrackingConfiguration.isSupported else { return }
         let configuration = ARFaceTrackingConfiguration()
