@@ -27,12 +27,17 @@ class ViewController: UIViewController {
                                                      sectionDescription: nil,
                                                      rows: [TableRow(name: "Basic Eyes Tracking",
                                                                      identifier: "segueToEyesTracking")]),
-                                        TableSection(sectionName: "Machine Learning Data Input",
-                                                     sectionDescription: nil,
-                                                     rows: [TableRow(name: "Data Input Visualization",
-                                                                     identifier: "segueToMLDataDisplay"),
-                                                            TableRow(name: "Data Input Capturing",
-                                                                     identifier: "segueToMLCapturing")])]
+                                         TableSection(sectionName: "Machine Learning Data Input",
+                                                      sectionDescription: nil,
+                                                      rows: [TableRow(name: "Data Input Visualization",
+                                                                      identifier: "segueToMLDataDisplay"),
+                                                             TableRow(name: "Data Input Capturing",
+                                                                      identifier: "segueToMLCapturing")]),
+                                         TableSection(sectionName: "Machine Learning Result",
+                                                      sectionDescription: nil,
+                                                      rows: [TableRow(name: "Eyes Tracking Using ML",
+                                                                      identifier: "segueToMLEyesTracking")])]
+    //segueToMLEyesTracking
     
     override func viewDidLoad() {
         mainTableView.delegate = self

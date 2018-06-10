@@ -48,8 +48,14 @@ class MLCapturingViewController: UIViewController, ARSCNViewDelegate, ARSessionD
         if motion == .motionShake {
             timer.invalidate()
             subTimer.invalidate()
+            
+            // Pause the view's session
+            session.pause()
+            
             let alert = UIAlertController(title: "Go to Main Menu", message: "Are you sure to save and go back to Main Menu.", preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+                self.resetSession()
+            }))
             alert.addAction(UIAlertAction(title: "Main Menu", style: .default, handler: { action in
                 self.saveToCloud()
             }))
@@ -90,12 +96,7 @@ class MLCapturingViewController: UIViewController, ARSCNViewDelegate, ARSessionD
         // Store isIdleTimerDisabled Value
         UIApplication.shared.isIdleTimerDisabled = true
         
-        // Create a session configuration
-        guard ARFaceTrackingConfiguration.isSupported else { return }
-        let configuration = ARFaceTrackingConfiguration()
-        
-        // Run the view's session
-        session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+        resetSession()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -103,6 +104,15 @@ class MLCapturingViewController: UIViewController, ARSCNViewDelegate, ARSessionD
         
         // Pause the view's session
         session.pause()
+    }
+    
+    private func resetSession() {
+        // Create a session configuration
+        guard ARFaceTrackingConfiguration.isSupported else { return }
+        let configuration = ARFaceTrackingConfiguration()
+        
+        // Run the view's session
+        session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
     }
     
     // MARK: - session delegate
@@ -152,13 +162,13 @@ class MLCapturingViewController: UIViewController, ARSCNViewDelegate, ARSessionD
     }
     
     private func randomPosition() {
-        let x = CGFloat(Int.random(in: 0 ... 2)) / 2
-        let y = CGFloat(Int.random(in: 0 ... 2)) / 2
+        let x = CGFloat(Float.random(in: 0 ... 1))
+        let y = CGFloat(Float.random(in: 0 ... 1))
         lookAtPosition = CGPoint(x: x, y: y)
     }
     
     func runTimer() {
-        timer = Timer.scheduledTimer(timeInterval: 5, target: self,   selector: (#selector(changeIndicatorPosition)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 3, target: self,   selector: (#selector(changeIndicatorPosition)), userInfo: nil, repeats: true)
     }
     
     func runSubTimer() {
@@ -194,7 +204,7 @@ class MLCapturingViewController: UIViewController, ARSCNViewDelegate, ARSessionD
     @objc func intervalAction() {
         
         // Perform bouncing animation every 1 sec to remind to be ready
-        if Double(subTimerIntervalCount).remainder(dividingBy: 2) == 0 && subTimerIntervalCount != 0 && subTimerIntervalCount < 7 {
+        if Double(subTimerIntervalCount).remainder(dividingBy: 2) == 0 && subTimerIntervalCount != 0 && subTimerIntervalCount < 5 {
             
             lookAtScaleView.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
             self.lookAtScaleView.alpha = 0.5
@@ -209,7 +219,7 @@ class MLCapturingViewController: UIViewController, ARSCNViewDelegate, ARSessionD
         }
         
         // Perform bouncing animation and flash animation every 0.5 sec to inform that data is being captured
-        if subTimerIntervalCount >= 7 {
+        if subTimerIntervalCount >= 5 {
             lookAtScaleView.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
             setLookAtViewFlashColor()
             
@@ -353,7 +363,7 @@ class MLCapturingViewController: UIViewController, ARSCNViewDelegate, ARSessionD
          leftEyeEulerAnglesZ,
          rightEyePositionX,
          rightEyePositionY,
-         rightEyePositionY,
+         rightEyePositionZ,
          rightEyeEulerAnglesX,
          rightEyeEulerAnglesY,
          rightEyeEulerAnglesZ]
@@ -364,13 +374,15 @@ class MLCapturingViewController: UIViewController, ARSCNViewDelegate, ARSessionD
     
     var filename: String {
         let date = Date().timeIntervalSince1970
-        return "\(Int(date)) - \(UIDevice.current.name).csv"
+        return "\(Int(date)).csv"
+        
     }
+    
     
     func saveToCloud() {
         let storage = Storage.storage()
         let ref = storage.reference(withPath: "data-set/\(filename)")
-        let legend = "lookAtPositionX,lookAtPositionY,eyeBlinkLeft,eyeLookDownLeft,eyeLookInLeft,eyeLookOutLeft,eyeLookUpLeft,eyeSquintLeft,eyeWideLeft,eyeBlinkRight,eyeLookDownRight,eyeLookInRight,eyeLookOutRight,eyeLookUpRight,eyeSquintRight,eyeWideRight,browDownLeft,browDownRight,browInnerUp,browOuterUpLeft,browOuterUpRight,cheekPuff,cheekSquintLeft,cheekSquintRight,noseSneerLeft,noseSneerRight,facePositionX,facePositionY,facePositionZ,faceEulerAnglesX,faceEulerAnglesY,faceEulerAnglesZ,leftEyePositionX,leftEyePositionY,leftEyePositionZ,leftEyeEulerAnglesX,leftEyeEulerAnglesY,leftEyeEulerAnglesZ,rightEyePositionX,rightEyePositionY,rightEyePositionY,rightEyeEulerAnglesX,rightEyeEulerAnglesY,rightEyeEulerAnglesZ"
+        let legend = "lookAtPositionX,lookAtPositionY,eyeBlinkLeft,eyeLookDownLeft,eyeLookInLeft,eyeLookOutLeft,eyeLookUpLeft,eyeSquintLeft,eyeWideLeft,eyeBlinkRight,eyeLookDownRight,eyeLookInRight,eyeLookOutRight,eyeLookUpRight,eyeSquintRight,eyeWideRight,browDownLeft,browDownRight,browInnerUp,browOuterUpLeft,browOuterUpRight,cheekPuff,cheekSquintLeft,cheekSquintRight,noseSneerLeft,noseSneerRight,facePositionX,facePositionY,facePositionZ,faceEulerAnglesX,faceEulerAnglesY,faceEulerAnglesZ,leftEyePositionX,leftEyePositionY,leftEyePositionZ,leftEyeEulerAnglesX,leftEyeEulerAnglesY,leftEyeEulerAnglesZ,rightEyePositionX,rightEyePositionY,rightEyePositionZ,rightEyeEulerAnglesX,rightEyeEulerAnglesY,rightEyeEulerAnglesZ"
         let ds = [legend, dataSets.joined(separator: "\n")].joined(separator: "\n")
         let data = ds.data(using: .utf8)!
         ref.putData(data, metadata: nil) { (_, error) in

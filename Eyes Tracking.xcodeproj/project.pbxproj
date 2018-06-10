@@ -9,11 +9,16 @@
 /* Begin PBXBuildFile section */
 		9069057820CC527800474119 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9069057720CC527800474119 /* GoogleService-Info.plist */; };
 		CDB4F51548CB78DE8B268F9E /* Pods_Eyes_Tracking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F915E060E3BBB9335C3BEFAD /* Pods_Eyes_Tracking.framework */; };
+		D008D80320CDA9F6008C2FE8 /* regressorX.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D008D80120CDA9F5008C2FE8 /* regressorX.mlmodel */; };
+		D008D80420CDA9F6008C2FE8 /* regressorY.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D008D80220CDA9F5008C2FE8 /* regressorY.mlmodel */; };
+		D008D80720CDB92C008C2FE8 /* regressorMinY.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D008D80520CDB92B008C2FE8 /* regressorMinY.mlmodel */; };
+		D008D80820CDB92C008C2FE8 /* regressorMinX.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D008D80620CDB92C008C2FE8 /* regressorMinX.mlmodel */; };
 		D04BFCC920CB73F300315FF0 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BFCC820CB73F300315FF0 /* Utilities.swift */; };
 		D04BFCCB20CBFE7E00315FF0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D04BFCCA20CBFE7E00315FF0 /* ViewController.swift */; };
 		D07E3AD220CB259D00C0FCDD /* MLCapturingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07E3AD120CB259D00C0FCDD /* MLCapturingViewController.swift */; };
 		D07E3AD420CB263500C0FCDD /* MLDataDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07E3AD320CB263500C0FCDD /* MLDataDisplayViewController.swift */; };
 		D0D25B8920C80F5500A25627 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D25B8820C80F5500A25627 /* Extensions.swift */; };
+		D0D6754B20CDA7DB00C7B86A /* MLEyesTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D6754A20CDA7DB00C7B86A /* MLEyesTrackingViewController.swift */; };
 		D0E5847A20C806050052967A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5847920C806050052967A /* AppDelegate.swift */; };
 		D0E5847E20C806050052967A /* BasicEyesTrackingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E5847D20C806050052967A /* BasicEyesTrackingViewController.swift */; };
 		D0E5848120C806050052967A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0E5847F20C806050052967A /* Main.storyboard */; };
@@ -24,11 +29,16 @@
 		221622603E38B6B319DF6083 /* Pods-Eyes Tracking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eyes Tracking.release.xcconfig"; path = "Pods/Target Support Files/Pods-Eyes Tracking/Pods-Eyes Tracking.release.xcconfig"; sourceTree = "<group>"; };
 		9069057720CC527800474119 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B40C11330C96D42AA16E1F34 /* Pods-Eyes Tracking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eyes Tracking.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Eyes Tracking/Pods-Eyes Tracking.debug.xcconfig"; sourceTree = "<group>"; };
+		D008D80120CDA9F5008C2FE8 /* regressorX.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = regressorX.mlmodel; path = "Eyes Tracking Create ML Trainer/regressorX.mlmodel"; sourceTree = SOURCE_ROOT; };
+		D008D80220CDA9F5008C2FE8 /* regressorY.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = regressorY.mlmodel; path = "Eyes Tracking Create ML Trainer/regressorY.mlmodel"; sourceTree = SOURCE_ROOT; };
+		D008D80520CDB92B008C2FE8 /* regressorMinY.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = regressorMinY.mlmodel; path = "Eyes Tracking Create ML Trainer/regressorMinY.mlmodel"; sourceTree = SOURCE_ROOT; };
+		D008D80620CDB92C008C2FE8 /* regressorMinX.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = regressorMinX.mlmodel; path = "Eyes Tracking Create ML Trainer/regressorMinX.mlmodel"; sourceTree = SOURCE_ROOT; };
 		D04BFCC820CB73F300315FF0 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		D04BFCCA20CBFE7E00315FF0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D07E3AD120CB259D00C0FCDD /* MLCapturingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLCapturingViewController.swift; sourceTree = "<group>"; };
 		D07E3AD320CB263500C0FCDD /* MLDataDisplayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLDataDisplayViewController.swift; sourceTree = "<group>"; };
 		D0D25B8820C80F5500A25627 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D0D6754A20CDA7DB00C7B86A /* MLEyesTrackingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MLEyesTrackingViewController.swift; sourceTree = "<group>"; };
 		D0E5847620C806050052967A /* Eyes Tracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Eyes Tracking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E5847920C806050052967A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0E5847D20C806050052967A /* BasicEyesTrackingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicEyesTrackingViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +99,11 @@
 			isa = PBXGroup;
 			children = (
 				D0E5847920C806050052967A /* AppDelegate.swift */,
+				D0D6754A20CDA7DB00C7B86A /* MLEyesTrackingViewController.swift */,
+				D008D80620CDB92C008C2FE8 /* regressorMinX.mlmodel */,
+				D008D80520CDB92B008C2FE8 /* regressorMinY.mlmodel */,
+				D008D80120CDA9F5008C2FE8 /* regressorX.mlmodel */,
+				D008D80220CDA9F5008C2FE8 /* regressorY.mlmodel */,
 				D0E5847D20C806050052967A /* BasicEyesTrackingViewController.swift */,
 				D04BFCCA20CBFE7E00315FF0 /* ViewController.swift */,
 				D07E3AD120CB259D00C0FCDD /* MLCapturingViewController.swift */,
@@ -219,12 +234,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D008D80720CDB92C008C2FE8 /* regressorMinY.mlmodel in Sources */,
+				D008D80320CDA9F6008C2FE8 /* regressorX.mlmodel in Sources */,
 				D07E3AD420CB263500C0FCDD /* MLDataDisplayViewController.swift in Sources */,
 				D04BFCC920CB73F300315FF0 /* Utilities.swift in Sources */,
+				D008D80420CDA9F6008C2FE8 /* regressorY.mlmodel in Sources */,
 				D0D25B8920C80F5500A25627 /* Extensions.swift in Sources */,
 				D07E3AD220CB259D00C0FCDD /* MLCapturingViewController.swift in Sources */,
 				D04BFCCB20CBFE7E00315FF0 /* ViewController.swift in Sources */,
 				D0E5847E20C806050052967A /* BasicEyesTrackingViewController.swift in Sources */,
+				D008D80820CDB92C008C2FE8 /* regressorMinX.mlmodel in Sources */,
+				D0D6754B20CDA7DB00C7B86A /* MLEyesTrackingViewController.swift in Sources */,
 				D0E5847A20C806050052967A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,7 +383,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7J5JZ3G2QB;
+				DEVELOPMENT_TEAM = EJ5UD9292F;
 				INFOPLIST_FILE = "Eyes Tracking/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -383,7 +403,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7J5JZ3G2QB;
+				DEVELOPMENT_TEAM = EJ5UD9292F;
 				INFOPLIST_FILE = "Eyes Tracking/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
