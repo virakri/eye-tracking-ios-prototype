@@ -52,13 +52,20 @@ class MLCapturingViewController: UIViewController, ARSCNViewDelegate, ARSessionD
             // Pause the view's session
             session.pause()
             
-            let alert = UIAlertController(title: "Go to Main Menu", message: "Are you sure to save and go back to Main Menu.", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Menu", message: "What do you want to do?", preferredStyle: UIAlertController.Style.alert)
+            
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
                 self.resetSession()
             }))
-            alert.addAction(UIAlertAction(title: "Main Menu", style: .default, handler: { action in
+//            alert.addAction(UIAlertAction(title: "Go to menu (no upload)", style: .default, handler: { action in
+//                self.dataSets = []
+//                self.navigationController?.popViewController(animated: true)
+//            }))
+            alert.addAction(UIAlertAction(title: "Upload & go to menu", style: .default, handler: { action in
                 self.saveToCloud()
+                self.navigationController?.popViewController(animated: true)
             }))
+            
             self.present(alert, animated: true, completion: nil)
             
         }
@@ -187,17 +194,40 @@ class MLCapturingViewController: UIViewController, ARSCNViewDelegate, ARSessionD
         
         randomPosition()
         
-        lookAtScaleView.transform = CGAffineTransform(scaleX: 0, y: 0)
-        
-        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: [], animations: {
-            self.lookAtScaleView.transform = CGAffineTransform(scaleX: 1, y: 1)
-        }, completion: nil)
+        lookAtScaleView.alpha = 0.5
+        lookAtScaleView.transform = CGAffineTransform(scaleX: 0.25, y: 0.25)
         
         let transformX = (lookAtPosition.x - 0.5) * UIScreen.main.bounds.width // Screen size width
         let transformY = (lookAtPosition.y - 0.5) * UIScreen.main.bounds.height // Screen size height
         
-        lookAtPositionView.transform.tx = transformX
-        lookAtPositionView.transform.ty = transformY
+        UIView.animate(withDuration: 0.7, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [], animations: {
+            self.lookAtScaleView.alpha = 1
+            self.lookAtScaleView.transform = CGAffineTransform(scaleX: 1, y: 1)
+        }, completion: nil)
+        
+        let isHorizontalCurve = Int.random(in: 0...1) == 1 ? true : false
+        
+        let springVelocity: CGPoint = isHorizontalCurve ? CGPoint(x: 1, y: 10) : CGPoint(x: 10, y: 1)
+        
+        UIView.animate(withDuration: 0.7,
+                       delay: 0,
+                       usingSpringWithDamping: 1,
+                       initialSpringVelocity: springVelocity.x,
+                       options: [],
+                       animations: {
+                        self.lookAtPositionView.transform.tx = transformX
+        }, completion: nil)
+        
+        UIView.animate(withDuration: 0.7,
+                       delay: 0,
+                       usingSpringWithDamping: 1,
+                       initialSpringVelocity: springVelocity.y,
+                       options: [],
+                       animations: {
+                        self.lookAtPositionView.transform.ty = transformY
+        }, completion: nil)
+        
+        
         
     }
     
@@ -392,7 +422,6 @@ class MLCapturingViewController: UIViewController, ARSCNViewDelegate, ARSessionD
             if let error = error {
                 print(error)
             }
-            self.navigationController?.popViewController(animated: true)
         }
     }
 }
