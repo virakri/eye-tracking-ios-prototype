@@ -323,7 +323,7 @@ class MLEyesTrackingViewController: UIViewController, ARSCNViewDelegate, ARSessi
                                leftEyeEulerAnglesZ: dataSet.leftEyeEulerAnglesZ,
                                rightEyePositionX: dataSet.rightEyePositionX,
                                rightEyePositionY: dataSet.rightEyePositionY,
-                               rightEyePositionY_1: dataSet.rightEyePositionZ,
+                               rightEyePositionZ: dataSet.rightEyePositionZ,
                                rightEyeEulerAnglesX: dataSet.rightEyeEulerAnglesX,
                                rightEyeEulerAnglesY: dataSet.rightEyeEulerAnglesY,
                                rightEyeEulerAnglesZ: dataSet.rightEyeEulerAnglesZ)
@@ -369,7 +369,7 @@ class MLEyesTrackingViewController: UIViewController, ARSCNViewDelegate, ARSessi
                                leftEyeEulerAnglesZ: dataSet.leftEyeEulerAnglesZ,
                                rightEyePositionX: dataSet.rightEyePositionX,
                                rightEyePositionY: dataSet.rightEyePositionY,
-                               rightEyePositionY_1: dataSet.rightEyePositionZ,
+                               rightEyePositionZ: dataSet.rightEyePositionZ,
                                rightEyeEulerAnglesX: dataSet.rightEyeEulerAnglesX,
                                rightEyeEulerAnglesY: dataSet.rightEyeEulerAnglesY,
                                rightEyeEulerAnglesZ: dataSet.rightEyeEulerAnglesZ)

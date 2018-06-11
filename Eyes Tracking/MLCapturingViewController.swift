@@ -162,9 +162,12 @@ class MLCapturingViewController: UIViewController, ARSCNViewDelegate, ARSessionD
     }
     
     private func randomPosition() {
+        let isExtrema = Int.random(in: 0...1) == 1 ? true : false
+        let isHorizontalExtrema = Int.random(in: 0...1) == 1 ? true : false
+        let extremaValue = CGFloat(Int.random(in: 0 ... 1))
         let x = CGFloat(Float.random(in: 0 ... 1))
         let y = CGFloat(Float.random(in: 0 ... 1))
-        lookAtPosition = CGPoint(x: x, y: y)
+        lookAtPosition = isExtrema ? CGPoint(x: isHorizontalExtrema ? extremaValue : x , y: isHorizontalExtrema ? y : extremaValue ) : CGPoint(x: x, y: y)
     }
     
     func runTimer() {
