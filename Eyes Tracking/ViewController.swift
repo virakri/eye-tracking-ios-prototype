@@ -78,6 +78,13 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         return UIStatusBarStyle.lightContent
     }
     
+    // Calibration
+    
+    var cornerOffsets = (topLeft: CGPoint(), topRight: CGPoint(), bottomLeft: CGPoint(), bottomRight: CGPoint())
+    var transform: CGAffineTransform?
+    
+    var smoothEyeLookAtPosition = CGPoint()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -182,11 +189,18 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
             self.eyeLookAtPositionXs = Array(self.eyeLookAtPositionXs.suffix(smoothThresholdNumber))
             self.eyeLookAtPositionYs = Array(self.eyeLookAtPositionYs.suffix(smoothThresholdNumber))
             
-            let smoothEyeLookAtPositionX = self.eyeLookAtPositionXs.average!
-            let smoothEyeLookAtPositionY = self.eyeLookAtPositionYs.average!
+            var smoothEyeLookAtPositionX = self.eyeLookAtPositionXs.average!
+            var smoothEyeLookAtPositionY = self.eyeLookAtPositionYs.average!
+            
+            self.smoothEyeLookAtPosition = CGPoint(x: smoothEyeLookAtPositionX, y: smoothEyeLookAtPositionY)
+            if let transform = self.transform {
+                let transformedPoint = self.smoothEyeLookAtPosition.applying(transform)
+                smoothEyeLookAtPositionX = transformedPoint.x
+                smoothEyeLookAtPositionY = transformedPoint.y
+            }
             
             // update indicator position
-            self.eyePositionIndicatorView.transform = CGAffineTransform(translationX: smoothEyeLookAtPositionX, y: smoothEyeLookAtPositionY)
+            self.eyePositionIndicatorView.transform = CGAffineTransform(translationX: smoothEyeLookAtPositionX - self.view.frame.width / 2, y: smoothEyeLookAtPositionY - self.view.frame.height / 2)
             
             // update eye look at labels values
             self.lookAtPositionXLabel.text = "\(Int(round(smoothEyeLookAtPositionX + self.phoneScreenPointSize.width / 2)))"
@@ -215,5 +229,46 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         faceNode.transform = node.transform
         guard let faceAnchor = anchor as? ARFaceAnchor else { return }
         update(withFaceAnchor: faceAnchor)
+    }
+}
+
+typealias ViewControllerTrackingCalibration = ViewController
+extension ViewControllerTrackingCalibration {
+    
+    @IBAction func didPressCalibrate(_ sender: UIButton) {
+        print("Calibrating \(sender.titleLabel!.text!)")
+        switch sender.titleLabel?.text {
+        case "TL":
+            cornerOffsets.topLeft = smoothEyeLookAtPosition
+        case "TR":
+            cornerOffsets.topRight = smoothEyeLookAtPosition
+        case "BL":
+            cornerOffsets.bottomLeft = smoothEyeLookAtPosition
+        case "BR":
+            cornerOffsets.bottomRight = smoothEyeLookAtPosition
+        default:
+            break
+        }
+    }
+    
+    @IBAction func setTranslate(_ sender: Any) {
+        guard cornerOffsets.topLeft != CGPoint.zero || cornerOffsets.topRight != CGPoint.zero || cornerOffsets.bottomLeft != CGPoint.zero else {
+            print("Cannot calibrate without 3 points")
+            return
+        }
+        let a = simd_double3x3(rows: [simd_double3(Double(cornerOffsets.topLeft.x),
+                                                   Double(cornerOffsets.topLeft.y), 1),
+                                      simd_double3(Double(cornerOffsets.topRight.x),
+                                                   Double(cornerOffsets.topRight.y), 1),
+                                      simd_double3(Double(cornerOffsets.bottomLeft.x),
+                                                   Double(cornerOffsets.bottomLeft.y), 1)])
+        let b = simd_double3x3(rows: [simd_double3(0, 0, 1),
+                                      simd_double3(Double(view.frame.width), 0, 1),
+                                      simd_double3(0, Double(view.frame.height), 1)])
+        let x = simd_mul(a.inverse, b)
+        transform = CGAffineTransform(a: CGFloat(x.columns.0.x), b: CGFloat(x.columns.1.x),
+                                      c: CGFloat(x.columns.0.y), d: CGFloat(x.columns.1.y),
+                                      tx: CGFloat(x.columns.0.z), ty: CGFloat(x.columns.1.z))
+        print(transform ?? "No Transform")
     }
 }
